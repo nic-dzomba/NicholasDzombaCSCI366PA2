@@ -18,6 +18,10 @@
 #include "BitArray2D.hpp"
 
 BitArray2D::BitArray2D(unsigned int rows, unsigned int columns) {
+    if(rows < 1 || columns < 1) {
+        throw "bad indices";
+    }
+
 
 }
 
@@ -29,6 +33,13 @@ BitArray2D::~BitArray2D() {
 
 bool BitArray2D::get(unsigned int row, unsigned int column){
    // check array bounds
+    if(row < 0 || column < 0) {
+        throw "negative indices";
+    }
+
+    if (row > rows || column > columns) {
+        throw "indices too large";
+    }
 
    // get the element
    return get_bit_elem(array, columns, row, column);
@@ -37,6 +48,13 @@ bool BitArray2D::get(unsigned int row, unsigned int column){
 
 
 void BitArray2D::set(unsigned int row, unsigned int column){
+    if(row < 0 || column < 0) {
+        throw "negative indices";
+    }
+
+    if (row > rows || column > columns) {
+        throw "indices too large";
+    }
    // check array bounds
 
    // set the element
